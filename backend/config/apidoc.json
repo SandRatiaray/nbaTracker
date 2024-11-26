@@ -1,0 +1,12 @@
+{
+    "name": "NBA Tracker",
+    "version": "1.0.0",
+    "description": "apiDoc",
+    "title": "NBA Tracker API",
+    "url": "http://localhost:4000",
+    "sampleUrl": true,
+    "template": {
+        "forceLanguage": "en",
+        "showRequiredLabels": true
+    }
+}
