@@ -20,7 +20,7 @@ model User {
   firstName      String
   lastName       String
   birthdayDate   DateTime?
-  admin          Boolean
+  admin          Boolean   @default(false)
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @default(now())
   teamsFollowed  Team[]
