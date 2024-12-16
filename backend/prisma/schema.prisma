@@ -14,13 +14,15 @@ datasource db {
 }
 
 model User {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  email          String   @unique
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  email          String    @unique
   password       String
-  name           String?
-  role           Role     @default(USER)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @default(now())
+  firstName      String
+  lastName       String
+  birthdayDate   DateTime?
+  admin          Boolean
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @default(now())
   teamsFollowed  Team[]
   playerFollowed Player[]
 }
@@ -41,9 +43,4 @@ model Player {
   User    User?   @relation(fields: [userId], references: [id])
   teamId  String  @db.ObjectId
   team    Team    @relation(fields: [teamId], references: [id])
-}
-
-enum Role {
-  USER
-  ADMIN
 }
