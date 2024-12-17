@@ -4,14 +4,13 @@ import { getAllUsers } from '../controllers/UserController'
 const router = Router()
 
 /**
- *
- * @apiDescription that's how you get us back the users
- * @apiGroup User
- * @api {GET} /api/users/all get all users
- * @apiName getAllUsers
- *
- * @apiSampleRequest http://localhost:3000/api/users/all
- *
+ * @swagger
+ * /users/all:
+ *   get:
+ *     description: retrieve all users
+ *     responses:
+ *       200:
+ *         description: Returns a a list of users
  */
 router.get('/all', getAllUsers)
 
