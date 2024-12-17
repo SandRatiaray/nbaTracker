@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: 'npm'
-          cache-dependency-path: backend/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: install dependancies
         run: |
