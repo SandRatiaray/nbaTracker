@@ -4,14 +4,24 @@ import { getAllUsers } from '../controllers/UserController'
 const router = Router()
 
 /**
- *
- * @apiDescription that's how you get us back the users
- * @apiGroup User
- * @api {GET} /api/users/all get all users
- * @apiName getAllUsers
- *
- * @apiSampleRequest http://localhost:3000/api/users/all
- *
+ * @swagger
+ * /api/users/all:
+ *   get:
+ *     summary: Retrieve  users
+ *     description: This route allows you to retrieve all registered users with their details.
+ *     tags:
+ *       - user
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved the list of users.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Internal server error.
  */
 router.get('/all', getAllUsers)
 
