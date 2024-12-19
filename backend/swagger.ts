@@ -1,7 +1,8 @@
 import swaggerJSDoc from 'swagger-jsdoc'
 
+// Swagger configuration options
 const options = {
-  definition: {
+  swaggerDefinition: {
     openapi: '3.0.0',
     info: {
       title: 'NBA Tracker Api',
@@ -9,7 +10,7 @@ const options = {
       description: 'API for analytics and match tracker for NBA',
     },
   },
-  apis: ['./src/routes/*.ts'],
+  apis: ['./src/routes/*.ts', './src/schemas/*.ts'],
 }
 
 const swaggerSpec = swaggerJSDoc(options)
