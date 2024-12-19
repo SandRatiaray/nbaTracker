@@ -6,7 +6,7 @@ test(' it should get the right type for admin user', () => {
   expect(userAdmin.email).toMatch(
     /^(([^<>()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/,
   )
-  expect(userAdmin.admin).toBe(true)
+  expect(userAdmin.isAdmin).toBe(true)
   expect(typeof userAdmin.firstName).toBe('string')
   expect(typeof userAdmin.lastName).toBe('string')
   expect(typeof userAdmin.password).toBe('string')
