@@ -5,12 +5,23 @@ const router = Router()
 
 /**
  * @swagger
- * /users/all:
+ * /api/users/all:
  *   get:
- *     description: retrieve all users
+ *     summary: Retrieve  users
+ *     description: This route allows you to retrieve all registered users with their details.
+ *     tags:
+ *       - user
  *     responses:
  *       200:
- *         description: Returns a a list of users
+ *         description: Successfully retrieved the list of users.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Internal server error.
  */
 router.get('/all', getAllUsers)
 
