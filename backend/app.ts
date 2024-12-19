@@ -4,7 +4,7 @@ import index from './src/routes'
 import path from 'path'
 import { limiter } from './src/middlewares/rateLimiter'
 import swaggerUi from 'swagger-ui-express'
-import swaggerSpec from './swagger'
+import swaggerSpec from './src/config/swagger'
 
 const app: Application = express()
 
