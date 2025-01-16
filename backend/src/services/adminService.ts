@@ -1,94 +1,26 @@
-import { log } from 'console'
 import prisma from '../../config/db.config'
 import { Prisma } from '@prisma/client'
 
-export const getUsers = () => {
-  return [
-    {
-      id: 1,
-      email: 'admin@admin.com',
-      password: '123456789',
-      firstName: 'john',
-      lastName: 'doe',
-      isAdmin: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      teamsFollowed: [],
-      playersFollowed: [],
-    },
-    {
-      id: 2,
-      email: 'jane@gmail.com',
-      password: '123456789',
-      firstName: 'jane',
-      lastName: 'doe',
-      isAdmin: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      teamsFollowed: [],
-      playersFollowed: [],
-    },
-  ]
+export const getUsers = async () => {
+  return prisma.user.findMany()
 }
 
-export const getUniqueUser = (id: string) => {
-  console.log(id)
+export const getUniqueUser = (email: string) => {
+  console.log(email)
 
-  return {
-    id: 2,
-    email: 'jane@gmail.com',
-    password: '123456789',
-    firstName: 'jane',
-    lastName: 'doe',
-    isAdmin: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    teamsFollowed: [],
-    playersFollowed: [],
-  }
+  return prisma.user.findUnique({ where: { email: email } })
 }
 
-export const updateToAdmin = (id: string) => {
-  console.log(id)
+export const updateAdmin = (email: string, isAdmin: boolean) => {
+  console.log(email)
 
-  return {
-    id: 2,
-    email: 'jane@gmail.com',
-    password: '123456789',
-    firstName: 'jane',
-    lastName: 'doe',
-    isAdmin: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    teamsFollowed: [],
-    playersFollowed: [],
-  }
+  return prisma.user.update({ where: { email: email }, data: { isAdmin: isAdmin } })
 }
 
-export const updateUser = (id: string) => {
-  console.log(id)
+export const deleteUser = (email: string) => {
+  console.log(email)
 
-  return {
-    id: 2,
-    email: 'jane@gmail.com',
-    password: '123456789',
-    firstName: 'jane',
-    lastName: 'doe',
-    isAdmin: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    teamsFollowed: [],
-    playersFollowed: [],
-  }
-}
-
-export const deleteUser = (id: string) => {
-  console.log(id)
-
-  return {
-    id: 2,
-    email: 'jane@gmail.com',
-  }
+  return prisma.user.delete({ where: { email: email } })
 }
 
 export const initilisedUsersAdmin = (users: Prisma.UserCreateManyInput[]) => {
