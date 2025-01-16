@@ -5,11 +5,10 @@ import {
   getUsers,
   getUniqueUser,
   initilisedUsersAdmin,
-  updateToAdmin,
-  updateUser,
+  updateAdmin,
 } from '../services/adminService'
 
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (_: Request, res: Response) => {
   try {
     const users = await getUsers()
 
@@ -30,10 +29,11 @@ export const getOneUser = async (req: Request, res: Response) => {
   }
 }
 
-export const createUserAdmin = async (req: Request, res: Response) => {
+export const updateUserAdmin = async (req: Request, res: Response) => {
   try {
-    const id = req.body.id
-    const newAdmin = await updateToAdmin(id)
+    const email = req.body.email
+    const isAdmin = req.body.isAdmin
+    const newAdmin = await updateAdmin(email, isAdmin)
 
     res.status(200).json(newAdmin)
   } catch (error) {
@@ -41,21 +41,10 @@ export const createUserAdmin = async (req: Request, res: Response) => {
   }
 }
 
-export const updateOneUser = async (req: Request, res: Response) => {
-  try {
-    const id = req.body.id
-    const updatedUser = await updateUser(id)
-
-    res.status(200).json(updatedUser)
-  } catch (error) {
-    res.status(400).json({ message: `Can't update this user` })
-  }
-}
-
 export const deleteOneUser = async (req: Request, res: Response) => {
   try {
-    const id = req.body.id
-    const deletedUser = await deleteUser(id)
+    const email = req.body.email
+    const deletedUser = await deleteUser(email)
 
     res.status(200).json(deletedUser)
   } catch (error) {
